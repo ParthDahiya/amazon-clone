@@ -1,11 +1,11 @@
-import React from 'react'
+import React, { useReducer } from 'react'
 import './Checkout.css'
 import { useStateValue } from './StateProvider'
 import Subtotal from './Subtotal'
 import CheckoutProduct from './CheckoutProduct'
 
 function Checkout() {
-  const [{basket}, dsipatch] = useStateValue()
+  const [{basket, user}, dispatch] = useStateValue()
 
   return (
     <div className='checkout'>
@@ -15,6 +15,7 @@ function Checkout() {
             src="https://images-na.ssl-images-amazon.com/images/G/02/UK_CCMP/TM/OCC_Amazon1._CB423492668_.jpg" alt="" />
 
             <div>
+                <h3>Hello, {user?.email}</h3>
                 <h2 className='checkout_title'>Your Shopping Basket</h2>
 
                 {basket.map( (item, index) => {
@@ -29,8 +30,6 @@ function Checkout() {
                   
                 })}
 
-                {/* {Basket item} */}
-                {/* {Basket item} */}
             </div>
         </div>
 
